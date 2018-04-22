@@ -6,6 +6,7 @@ from django.http import HttpResponse
 from . import database
 from .models import PageView
 
+
 # Create your views here.
 
 def index(request):
@@ -17,6 +18,11 @@ def index(request):
         'database': database.info(),
         'count': PageView.objects.count()
     })
+
+
+def hello_world(request):
+    return render(request, 'welcome/HelloWorld.html')
+
 
 def health(request):
     return HttpResponse(PageView.objects.count())
